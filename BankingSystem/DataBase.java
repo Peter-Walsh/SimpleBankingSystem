@@ -21,7 +21,7 @@ public class DataBase {
     private final Statement statement;
 
     public DataBase(String fileName) {
-        this.url = "jdbc:sqlite:/Users/peteylumpkins/desktop/" + fileName;
+        this.url = "jdbc:sqlite:" + fileName;
         statement = getStatement();
         executeUpdate(SETUP);
     }
