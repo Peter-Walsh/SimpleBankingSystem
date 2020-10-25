@@ -35,12 +35,54 @@ public class DataBase {
         String update = "SELECT * FROM " + TABLE_NAME;
         return executeQuery(update);
     }
+    
+    public ResultSet getRow(String cardNumber, String pin) {
+        String update = "SELECT id, number, pin, balance FROM " + TABLE_NAME +
+                " WHERE number = " + cardNumber +
+                " AND pin = " + pin + ";";
+        return executeQuery(update);
+    }
+
+    public ResultSet getRow(int id) {
+        String update = "SELECT id FROM " + TABLE_NAME + " WHERE id = " + id + ";";
+        return executeQuery(update);
+    }
 
     public void add(int id, String cardNumber, String pin, int balance) {
         String update = "INSERT INTO " + TABLE_NAME + " VALUES " +
                 "(" + id + ", " + "'" + cardNumber + "'" + ", " +
                 "'" + pin + "'" + ", " + balance + ")";
         executeUpdate(update);
+    }
+    
+    @Override
+    public String toString() {
+        
+        // todo
+        
+        StringBuilder result = new StringBuilder();
+        ResultSet database = this.getAll();
+        result.append("      | id |     CardNumber    |  Pin  |    Balance    |\n");
+        result.append("-----------------------------------------------------\n");
+        try {
+            int row = 1;
+            String id, num, pin, balance, r;
+            while(database.next()) {
+                r = "Row " + row + " |";
+                id = " " + database.getString("id") + " |";
+                num = database.getString("num") + "|";
+                pin = " " + database.getString("pin");
+                balance = database.getString("balance");
+
+                result.append(r);
+                result.append(id);
+                result.append(num);
+                result.append(pin);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error while getting database");
+        }
+        return result.toString();
     }
 
     private Statement getStatement() {
