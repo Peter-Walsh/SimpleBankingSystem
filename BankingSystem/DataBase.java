@@ -1,22 +1,23 @@
-package BankingSystem;
+package banking;
 
 import org.sqlite.SQLiteDataSource;
 
-import javax.swing.plaf.TabbedPaneUI;
-import javax.swing.plaf.nimbus.State;
-import java.sql.*;
-import java.util.concurrent.Callable;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DataBase {
 
     private final String url;
     private final String TABLE_NAME = "card";
 
+
     private final String SETUP = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "(" +
-                                 "id INTEGER," +
-                                 "number TEXT," +
-                                 "pin TEXT," +
-                                 "balance INTEGER DEFAULT 0);";
+            "id INTEGER," +
+            "number TEXT," +
+            "pin TEXT," +
+            "balance INTEGER DEFAULT 0);";
 
     private final Statement statement;
 
@@ -26,16 +27,23 @@ public class DataBase {
         executeUpdate(SETUP);
     }
 
+    public void updateBalance(int amount, String cardNumber) {
+        String update = "UPDATE " + TABLE_NAME +
+                " SET balance = balance + " + amount +
+                " WHERE number = " + cardNumber;
+        executeUpdate(update);
+    }
+
+    public void deleteRow(String cardNumber) {
+        String update = "DELETE FROM " + TABLE_NAME + " WHERE number = " + cardNumber;
+        executeUpdate(update);
+    }
+
     public void clearDataBase() {
         executeUpdate("DROP TABLE IF EXISTS " + TABLE_NAME);
         executeUpdate(SETUP);
     }
 
-    public ResultSet getAll() {
-        String update = "SELECT * FROM " + TABLE_NAME;
-        return executeQuery(update);
-    }
-    
     public ResultSet getRow(String cardNumber, String pin) {
         String update = "SELECT id, number, pin, balance FROM " + TABLE_NAME +
                 " WHERE number = " + cardNumber +
@@ -43,8 +51,14 @@ public class DataBase {
         return executeQuery(update);
     }
 
-    public ResultSet getRow(int id) {
-        String update = "SELECT id FROM " + TABLE_NAME + " WHERE id = " + id + ";";
+    public ResultSet getRow(String cardNumber) {
+        String update = "SELECT id, number, pin, balance FROM " + TABLE_NAME +
+                " WHERE number = " + cardNumber + ";";
+        return executeQuery(update);
+    }
+
+    public ResultSet getAll() {
+        String update = "SELECT * FROM " + TABLE_NAME;
         return executeQuery(update);
     }
 
@@ -54,36 +68,7 @@ public class DataBase {
                 "'" + pin + "'" + ", " + balance + ")";
         executeUpdate(update);
     }
-    
-    @Override
-    public String toString() {
-        
-        // todo
-        
-        StringBuilder result = new StringBuilder();
-        ResultSet database = this.getAll();
-        result.append("      | id |     CardNumber    |  Pin  |    Balance    |\n");
-        result.append("-----------------------------------------------------\n");
-        try {
-            int row = 1;
-            String id, num, pin, balance, r;
-            while(database.next()) {
-                r = "Row " + row + " |";
-                id = " " + database.getString("id") + " |";
-                num = database.getString("num") + "|";
-                pin = " " + database.getString("pin");
-                balance = database.getString("balance");
 
-                result.append(r);
-                result.append(id);
-                result.append(num);
-                result.append(pin);
-            }
-        } catch (SQLException e) {
-            System.out.println("Error while getting database");
-        }
-        return result.toString();
-    }
 
     private Statement getStatement() {
         SQLiteDataSource source = getDataSource();
