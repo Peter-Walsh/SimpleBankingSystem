@@ -29,8 +29,7 @@ The goal of this project was to reinforce the priniples of object oriented desig
 
 
 
-Assuming that you have everything installed on your machine, all you have to do to is run the file at:
-SimpleBankingSystem >>> 
+Assuming that you have everything installed on your machine, all you have to do to is run the file at Main.java located here: SimpleBankingSystem >>> src/main/java >>> Main >>> Main.java
 
 
 
