@@ -9,8 +9,6 @@ The goal of this project was to reinforce the priniples of object oriented desig
 
 # Functionality
 
-
-
 - Creating bank accounts
 - Logging in and out of accounts
 - Depositing, withdrawing, and transfering funds between accounts
@@ -27,9 +25,21 @@ The goal of this project was to reinforce the priniples of object oriented desig
 
 # How to get started
 
+In order to run the application, I'm pretty sure you need to have the following installed on your machine:
 
+- JVM 14.0.1 
+- Gradle 6.5.1
+- SQLite3 3.28 
 
 Assuming that you have everything installed on your machine, all you have to do to is run the file at Main.java located here: SimpleBankingSystem >>> src/main/java >>> Main >>> Main.java
+
+Hopefully it doesn't crash when you try to run it. If it's working correctly, the console should present you with the following options:
+
+1. Create Account
+2. Log into Account
+0. Exit
+
+To select an option, input the number that corresponds to the option. For instance, if you want to create an account, enter 1. If you want to log into an account, enter 2. If you want to exit the system, enter 0.
 
 
 
