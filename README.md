@@ -1,11 +1,12 @@
 # SimpleBankingSystem
 
-This is my simple banking system application. 
+This is my simple banking system application. It supports the basic functionality you might find at a bank, and stores account information in an SQL database. 
 
 # Goal
 
-The goal of this project was to reinforce the priniples of object oriented design I have been studying in my coursework, and expose myself to new technologies. 
-
+The goal of this project was to reinforce the priniples of object-oriented design I have been studying in my coursework, and expose myself to new technologies. 
+In my coursework, we studied the theory behind object-oriented programming, and I was looking to put those ideas into practice, while also exposing myself to new 
+ideas and technology, namely SQL databases, build tools such as Gradle, and the Luhn algorithm.
 
 # Functionality
 
