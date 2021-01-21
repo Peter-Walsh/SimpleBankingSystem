@@ -24,6 +24,9 @@ ideas and technology, namely SQL databases, build tools such as Gradle, and the 
 - Principles of Object-Oriented Design
 - Experience with Java programming language
 
+# Where's the source code
+If you're looking for the Java source code, it's located 
+
 # How to get started
 
 To run the application, I'm pretty sure you need to have the following installed on your machine:
@@ -32,7 +35,10 @@ To run the application, I'm pretty sure you need to have the following installed
 - Gradle 6.5.1
 - SQLite3 3.28 
 
-Assuming that you have everything installed on your machine, all you have to do is run the file at Main.java located here: SimpleBankingSystem >>> src/main/java >>> Main >>> Main.java
+Assuming that you have everything installed on your machine, all you have to do is run the file at Main.java located here:
+```
+SimpleBankingSystem >>> src/main/java >>> Main >>> Main.java
+```
 
 Hopefully, it doesn't crash when you try to run it. If it's working correctly, the console should present you with the following options:
 #
