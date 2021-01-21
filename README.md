@@ -25,7 +25,15 @@ ideas and technology, namely SQL databases, build tools such as Gradle, and the 
 - Experience with Java programming language
 
 # Where's the source code
-If you're looking for the Java source code, it's located 
+If you're looking for the Java source code, navigate to the src folder located in the SimpleBankingSystem folder:
+```
+SimpleBankingSystem >>> src
+```
+Under the src folder there should be 3 respective folders containing the source code for the application
+```
+src >>> bank
+
+       
 
 # How to get started
 
